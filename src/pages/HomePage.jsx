@@ -39,9 +39,9 @@ const HomePageConteiner = styled.div`
 `;
 
 const image = [
-    '../src/assets/collection-1.png',
-    '../src/assets/collection-2.png',
-    '../src/assets/collection-3.png',
+    '/public/collection-1.png',
+    '/public/collection-2.png',
+    '/public/collection-3.png',
 ]
 
 const product = [
