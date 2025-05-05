@@ -47,9 +47,29 @@ const FooterConteiner = styled.footer`
     @media screen and (max-width: 314px){
         padding: 3rem 2rem;
         text-align: center;
+        justify-content: center;
         .footer{
             flex-direction: column;
             padding: 1rem;
+            & p{
+                display: block;
+                text-align: start;
+            }
+            .sociais{
+                width: 100%;
+                & div{
+                    gap: 1rem;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 700px){
+        padding: 3rem 2rem;
+        text-align: center;
+        .footer{
+            flex-direction: column;
+            padding: 1rem;
+            width: 100%;
             & p{
                 display: block;
                 text-align: start;

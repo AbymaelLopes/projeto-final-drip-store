@@ -14,139 +14,112 @@ const HeaderConteiner = styled.header`
     & #menu{
         display: none;
     }
-    .header{ 
-        background: var(--white);
+    .header{
         padding: 2rem 5rem;
-        display: flex;
-        gap: 1rem;
+        display: inline-flex;
         align-items: center;
+        gap: 1rem;
         justify-content: space-between;
-        flex-flow: row wrap;
-        position: fixed;
-        z-index: 100;
-        width: 100%;
-        .logo-header{
+        .area-busca{
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            width: 40%;
+            & input{
+                width: 100%;
+                background-color: var(--ligth-gray-3);
+                height: 2.5rem;
+                border-radius: 1rem;
+                padding: 1rem;
+                border: 0.1rem solid var(--ligth-gray-2);
+                &:focus{
+                    border: 0.1rem solid var(--ligth-gray-3);
+                    box-shadow: none;
+                }
+            }
             & img{
-                display: visible;
-                width: 12rem;
+                position: absolute;
+                right: 0.75rem;
             }
         }
         .area-redirecionamento{
-            display: flex;
-            align-items: center;
+            display: inline-flex;
             gap: 1rem;
-            & a button{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 7rem;
+            align-items: center;
+            & button{
+                width: 5.5rem;
                 height: 2.5rem;
                 background-color: var(--primary);
-                border-radius: 4px;
-                color: var(--white);
-                font-size: 14px;
+                border-radius: 1rem;
                 border: none;
-                transition: ease-in-out 0.2s;
-                cursor: pointer;&:hover{
-                    color: var(--primary);
-                    background-color: var(--white);
-                }
+                color: var(--white);
+                font-size: 1rem;        
             }
             & a p{
+                transition: 0.2s ease-in-out;
                 color: var(--dark-gray-2);
-                font-size: 16px;
-                width: 6rem;
-                text-align: center;
                 &:hover{
                     color: var(--primary);
                 }
-            }
-        }
-        .area-busca{
-            display: flex;
-            position: relative;
-            align-items: center;
-            & input{
-                width: 30rem;
-                height: 2.5rem;
-                border-radius: 15px;
-                border: 1px solid var(--ligth-gray);
-                padding: 0 1rem;
-                &:focus{
-                    outline: 1px solid var(--primary);
-                    border: none;
-                    padding: 0 1rem;
-                }
-            }& img{
-                display: flex;
-                position: absolute;
-                right: 1rem;
-                cursor: pointer;
             }
         }
     }
-    .navegacao{
+    & nav{
         width: 100%;
-        padding-top: 6rem;
-        box-shadow: 0 2px 10px 4px var(--ligth-gray-2);
-        & nav{
-            display: flex;
-            justify-content: start;
-            padding: 1rem;
-            margin-left: 5rem;
-            gap: 2rem;
-            font-weight: bold;
-            & a{
-                color: var(--dark-gray);
-                transition: ease-in-out 0.2s;
-                &:hover{
-                    color: var(--primary);
-                }&.active{
-                    color: var(--primary);
-                    padding-bottom: 10px;
-                    border-bottom: 3px var(--primary) solid ;
-                }
+        display: flex;
+        justify-content: start;
+        padding: 1rem;
+        margin-left: 5rem;
+        gap: 2rem;
+        font-weight: bold;
+        & a{
+            color: var(--dark-gray);
+            transition: ease-in-out 0.2s;
+            &:hover{
+                color: var(--primary);
+            }&.active{
+                color: var(--primary);
+                padding-bottom: 10px;
+                border-bottom: 3px var(--primary) solid ;
             }
         }
     }
 
-    //Aplicação de responsividade
-    @media screen and (max-width: 314px){
-        & #menu {
-            display: flex;
-            width: 1rem;
-        }
+    //Aplicação de responsividade para celulares
+    @media screen and (max-width: 550px){
         .header{
-            padding: 1rem;
-            gap: 0;
-            .logo-header{
-                & img{
-                    width: 7rem;
-                    margin: 0 1rem;
+            padding: 1rem 2rem;
+        }
+        #menu{
+            display: block;
+            width: 1.75rem;
+        }
+        & nav{
+            display: none;
+        }
+    }
+
+    //Responsividade para tablet
+    @media screen and (max-width: 700px){
+        .header{
+            & input{
+                display: none;
+            }
+            .area-redirecionamento{
+                & p, & button{
+                    display: none;
                 }
             }
             .area-busca{
-                input{
-                    display: none;
-                }img {
-                    position: sticky;
-                    padding-left: 1rem;
-                }
-            }
-            .area-redirecionamento{
-                gap: 0;
-                & a button{
-                    display: none;
-                }
-                & a p{
-                    display: none;
+                display: inline-flex;
+
+                & img{
+                    
                 }
             }
         }
-        .navegacao{
-            display: none;
-        }
-        }
+    }
+    
 `;
 
 const Header = () => {
@@ -163,7 +136,7 @@ const Header = () => {
 
     const handleSearch = () => {
 
-        if(busca.thim()){
+        if (busca.thim()) {
             navigate(`/produtos?search=${encodeURIComponent(busca)}`);
         }
     };
@@ -175,11 +148,8 @@ const Header = () => {
 
                 <img id='menu' src={menuSvg} alt="" />
 
-                <div className='logo-header'>
+                <NavLink to={'/'} end><img id='logo' src={logoHeader} /></NavLink>
 
-                    <NavLink to={'/'} end><img id='logo' src={logoHeader} /></NavLink>
-
-                </div>
 
                 <div className='area-busca'>
 
@@ -188,32 +158,32 @@ const Header = () => {
                         onChange={(e) => setBusca(e.target.value)}
                         onKeyDown={handleKeyDown} />
 
-                    <img src={lupa} alt="" onClick={handleSearch} />
+                    <img id='lupa' src={lupa} alt="" onClick={handleSearch} />
 
                 </div>
-
                 <div className='area-redirecionamento'>
 
                     <NavLink to={"/:id"}><p>Cadastre-se</p></NavLink>
 
                     <NavLink to={"/:id"}><button>Entrar</button></NavLink>
 
-                    <NavLink to={'/:id'}><img src={cartBuy} alt="" /></NavLink>
                 </div>
+
+                <NavLink to={'/:id'}><img src={cartBuy} alt="" /></NavLink>
+
             </div>
-            <div className='navegacao'>
-                <nav>
 
-                    <NavLink to={'/'} end>Home</NavLink>
+            <nav>
 
-                    <NavLink to={'/categorias'} end>Categorias</NavLink>
+                <NavLink to={'/'} end>Home</NavLink>
 
-                    <NavLink to={'/produtos'} end>Produtos</NavLink>
+                <NavLink to={'/categorias'} end>Categorias</NavLink>
 
-                    <NavLink to={'/meus-pedidos'} end>Meus Pedidos</NavLink>
+                <NavLink to={'/produtos'} end>Produtos</NavLink>
 
-                </nav>
-            </div>
+                <NavLink to={'/meus-pedidos'} end>Meus Pedidos</NavLink>
+
+            </nav>
         </HeaderConteiner>
     );
 }

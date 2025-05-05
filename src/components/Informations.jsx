@@ -6,9 +6,21 @@ const InformationsConteiner = styled.main`
     & p, h3{
         padding-bottom: 1rem;
     }
+    
     @media screen and (max-width: 314px){
         text-align: center;
         width: 100%;
+    }
+
+    @media screen and (max-width: 700px){
+        text-align: center;
+        width: 100%;
+        & div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 `;
 
