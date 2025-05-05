@@ -35,7 +35,7 @@ const GalleryConteiner = styled.main`
         }
     }
 
-    @media screen and (max-width: 314px) {
+    @media screen and (max-width: 768px) {
         .miniatura{
             gap: 8px;
             img {

@@ -11,12 +11,12 @@ const HeaderConteiner = styled.header`
     width: 100%;
     display: flex;
     flex-direction: column;
-    & #menu{
+    #menu{
         display: none;
     }
     .header{
         padding: 2rem 5rem;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         gap: 1rem;
         justify-content: space-between;
@@ -40,6 +40,7 @@ const HeaderConteiner = styled.header`
             & img{
                 position: absolute;
                 right: 0.75rem;
+                cursor: pointer;
             }
         }
         .area-redirecionamento{
@@ -64,8 +65,7 @@ const HeaderConteiner = styled.header`
             }
         }
     }
-    & nav{
-        width: 100%;
+    nav ul{
         display: flex;
         justify-content: start;
         padding: 1rem;
@@ -86,40 +86,36 @@ const HeaderConteiner = styled.header`
     }
 
     //Aplicação de responsividade para celulares
-    @media screen and (max-width: 550px){
+    @media screen and (max-width: 768px){
+        flex-direction: row;
+        
+        #logo{
+            width: 8rem;
+        }
         .header{
             padding: 1rem 2rem;
-        }
-        #menu{
-            display: block;
-            width: 1.75rem;
-        }
-        & nav{
-            display: none;
-        }
-    }
-
-    //Responsividade para tablet
-    @media screen and (max-width: 700px){
-        .header{
-            & input{
-                display: none;
-            }
-            .area-redirecionamento{
-                & p, & button{
-                    display: none;
-                }
+            #menu{
+                display: inline-flex;
+                justify-content: flex-start;
+                width: 1.25rem;
             }
             .area-busca{
-                display: inline-flex;
-
+                & input{
+                    display: none;
+                }
                 & img{
-                    
+                    position: static;
                 }
             }
+            .area-redirecionamento{
+                display: none;
+            }
         }
-    }
-    
+
+        nav ul{
+            display: none;
+        }
+    }    
 `;
 
 const Header = () => {
@@ -135,8 +131,8 @@ const Header = () => {
     };
 
     const handleSearch = () => {
-
-        if (busca.thim()) {
+        console.log(busca)
+        if (busca.trim() !== '') {
             navigate(`/produtos?search=${encodeURIComponent(busca)}`);
         }
     };
@@ -169,19 +165,23 @@ const Header = () => {
 
                 </div>
 
-                <NavLink to={'/:id'}><img src={cartBuy} alt="" /></NavLink>
+                <NavLink to={'/:id'}><img className='imgs' src={cartBuy} alt="" /></NavLink>
 
             </div>
 
             <nav>
 
-                <NavLink to={'/'} end>Home</NavLink>
+                <ul>
 
-                <NavLink to={'/categorias'} end>Categorias</NavLink>
+                    <NavLink to={'/'} end><li>Home</li></NavLink>
 
-                <NavLink to={'/produtos'} end>Produtos</NavLink>
+                    <NavLink to={'/categorias'} end><li>Categorias</li></NavLink>
 
-                <NavLink to={'/meus-pedidos'} end>Meus Pedidos</NavLink>
+                    <NavLink to={'/produtos'} end><li>Produtos</li></NavLink>
+
+                    <NavLink to={'/meus-pedidos'} end><li>Meus Pedidos</li></NavLink>
+                
+                </ul>
 
             </nav>
         </HeaderConteiner>

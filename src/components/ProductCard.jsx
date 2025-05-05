@@ -18,7 +18,7 @@ const ProductCardConteiner = styled.main`
         background: var(--white);
         border-radius: 4px;
     }
-    @media screen and (max-width: 314px){
+    @media screen and (max-width: 768px){
         p{
             font-size: 16px;
         }

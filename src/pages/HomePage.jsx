@@ -23,16 +23,13 @@ const HomePageConteiner = styled.div`
         }
     }
        
-    @media screen and (max-width: 314px){
+    @media screen and (max-width: 768px){
         .home{
             width: 100%;
-            position: relative;
-            top: 3.5rem;
-            padding-bottom: 4rem;
         }
         .colecoes-destaque{
             & img{
-                width: 15rem;  
+                width: 12rem;
             }
         }
     }

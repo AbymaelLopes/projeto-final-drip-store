@@ -44,7 +44,7 @@ const FooterConteiner = styled.footer`
     }
 
     //Aplicação de responsividade
-    @media screen and (max-width: 314px){
+    @media screen and (max-width: 768px){
         padding: 3rem 2rem;
         text-align: center;
         justify-content: center;
@@ -60,25 +60,9 @@ const FooterConteiner = styled.footer`
                 & div{
                     gap: 1rem;
                 }
+                & img{
+                width: 10rem;
             }
-        }
-    }
-    @media screen and (max-width: 700px){
-        padding: 3rem 2rem;
-        text-align: center;
-        .footer{
-            flex-direction: column;
-            padding: 1rem;
-            width: 100%;
-            & p{
-                display: block;
-                text-align: start;
-            }
-            .sociais{
-                width: 100%;
-                & div{
-                    gap: 1rem;
-                }
             }
         }
     }
