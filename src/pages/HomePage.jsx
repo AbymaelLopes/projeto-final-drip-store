@@ -3,6 +3,7 @@ import Gallery from '../components/Gallery.jsx'
 import Section from '../components/Section.jsx'
 import ProductListing from '../components/ProductListing.jsx'
 import styled from 'styled-components'
+import { BtnStyle } from '../components/Styles/BtnStyle.jsx'
 
 const HomePageConteiner = styled.div`
     display: flex;
@@ -20,6 +21,14 @@ const HomePageConteiner = styled.div`
         & img{
             width: 24rem;
             border-radius: 4px;  
+        }& div {
+            display: flex;
+            position: relative;
+            & button{
+                position: absolute;
+                top: 70%;
+                left: 2rem;
+            }
         }
     }
        
@@ -30,6 +39,11 @@ const HomePageConteiner = styled.div`
         .colecoes-destaque{
             & img{
                 width: 12rem;
+            }
+            & div button{
+                position: absolute;
+                top: 60%;
+                left: 1rem;
             }
         }
     }
@@ -56,35 +70,41 @@ const HomePage = () => {
     return (
         <HomePageConteiner>
 
-        <Layout>
+            <Layout>
 
-            <div className='home'>
+                <div className='home'>
 
-                <Gallery images={image} showThumbs={''} width={'85vw'} heigth={'32rem'} radius={'15px'} className={'gallery-conteiner'} />
+                    <Gallery images={image} showThumbs={''} width={'85vw'} heigth={'32rem'} radius={'15px'} className={'gallery-conteiner'} />
 
-                <Section title={'Coleções em Destaque'}>
+                    <Section title={'Coleções em Destaque'}>
 
-                    <div className='colecoes-destaque'>
+                        <div className='colecoes-destaque'>
 
-                        {image.map((image, index) => (
-                            <img key={index} src={image} alt="" />
-                        ))}
+                            {image.map((image, index) => (
+                                <div key={index} className='destaques' >
+                                    <img src={image} alt="" />
+                                    <BtnStyle>Comprar</BtnStyle>
+                                </div>
+                            ))}
 
-                    </div>
+                        </div>
 
-                </Section>
+                    </Section>
 
-                <Section title={'Coleções em Destaque'} titleAlign='center' >
+                    <Section title={'Coleções em Destaque'} titleAlign='center' >
 
-                </Section>
-                
-                <Section title={'Produtos em Alta'} link={'Ver mais >>>'} >
-                    <ProductListing products={product} />
-                </Section>
+                    </Section>
 
-            </div>
+                    <Section title={'Produtos em Alta'} link={'Ver mais >>>'} >
+                        <ProductListing products={product} />
+                    </Section>
 
-        </Layout>
+                    <Section>
+                    </Section>
+
+                </div>
+
+            </Layout>
         </HomePageConteiner>
     );
 }

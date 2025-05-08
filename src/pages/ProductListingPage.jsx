@@ -6,7 +6,7 @@ import Layout from "./Layout";
 import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 
-const PLPageConteiner = styled.main`
+const PLPageConteiner = styled.div`
     display: flex;
     .filtro{
         display: inline-block;
@@ -18,7 +18,7 @@ const PLPageConteiner = styled.main`
         margin: 0 2rem;
     }
 
-    @media screen and (max-width: 314px) {
+    @media screen and (max-width: 768px) {
         
     }
 `;
