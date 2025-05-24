@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import logoFooter from '../assets/logo-footer.svg';
+import logoFooter from '/assets/logo-footer.svg';
 import Informations from "./Informations";
 import { NavLink } from "react-router-dom";
-import twitter from '../assets/twitter.svg'
-import instagram from '../assets/instagram.svg'
-import facebook from '../assets/facebook.svg'
+import twitter from '/assets/twitter.svg'
+import instagram from '/assets/instagram.svg'
+import facebook from '/assets/facebook.svg'
 
 const FooterConteiner = styled.footer`
     background: var(--dark-gray);

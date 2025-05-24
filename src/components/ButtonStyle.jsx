@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const BtnStyle = styled.button`
-    width: 7rem;
-    height: 2.5rem;
+export const ButtonStyle = styled.button`
+    width: 9rem;
+    height: 3rem;
     background-color: var(--primary);
     border-radius: 1rem;
     border: none;
@@ -14,5 +14,11 @@ export const BtnStyle = styled.button`
         background-color: var(--primary), 0.2;
         color: var(--primary);
         border: 1px solid var(--primary);
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 7rem;
+        height: 2rem;
+        font-size: 12px;
     }
 `;

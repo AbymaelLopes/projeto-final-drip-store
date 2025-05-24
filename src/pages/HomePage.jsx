@@ -1,34 +1,22 @@
 import Layout from '../pages/Layout.jsx'
-import Gallery from '../components/Gallery.jsx'
 import Section from '../components/Section.jsx'
 import ProductListing from '../components/ProductListing.jsx'
 import styled from 'styled-components'
-import { BtnStyle } from '../components/Styles/BtnStyle.jsx'
+import CardDestaque from '../components/cardDestaque.jsx'
+import Gallery from '../components/Gallery.jsx'
 
 const HomePageConteiner = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    & .home{
+    .home{
         width: 90vw;
-    }
-    .colecoes-destaque{
-        display: flex;
-        justify-content: center;
-        flex-flow: row wrap;
-        gap: 1rem;
-        & img{
-            width: 24rem;
-            border-radius: 4px;  
-        }& div {
+        & .destaques{
             display: flex;
-            position: relative;
-            & button{
-                position: absolute;
-                top: 70%;
-                left: 2rem;
-            }
+            gap: 1rem;
+            justify-content: center;
+            flex-flow: row wrap;
         }
     }
        
@@ -36,34 +24,30 @@ const HomePageConteiner = styled.div`
         .home{
             width: 100%;
         }
-        .colecoes-destaque{
-            & img{
-                width: 12rem;
-            }
-            & div button{
-                position: absolute;
-                top: 60%;
-                left: 1rem;
-            }
-        }
     }
-`;
+`
 
-const image = [
-    '/public/collection-1.png',
-    '/public/collection-2.png',
-    '/public/collection-3.png',
+const slider = [
+    {title: 'Queima de stoque Nike', img: '/assets/image.png'},
+    {title: 'Coleção Adiddas', img: '/assets/destaque2.png'},
+    {title: 'Novo Beats Bass', img: '/assets/destaque3.png'}
 ]
 
-const product = [
-    { id: 1, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 2, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 3, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 4, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 5, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 6, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 7, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 8, image: '../src/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' }
+const destaques = [
+    {title: 'Novo Drop Supreme', img: '/assets/destaque1.png'},
+    {title: 'Coleção Adiddas', img: '/assets/destaque2.png'},
+    {title: 'Novo Beats Bass', img: '/assets/destaque3.png'}
+]
+
+const products = [
+    { id: 1, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 2, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 3, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 4, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 5, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 6, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 7, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 8, image: '/assets/Produto.svg', name: 'Produto', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' }
 ]
 
 const HomePage = () => {
@@ -73,20 +57,15 @@ const HomePage = () => {
             <Layout>
 
                 <div className='home'>
-
-                    <Gallery images={image} showThumbs={''} width={'85vw'} heigth={'32rem'} radius={'15px'} className={'gallery-conteiner'} />
+                   
+                    <Gallery images={slider} showThumbs={''} width={'35rem'} height={'18rem'} radius={'15px'} className={'gallery-conteiner'}/>        
 
                     <Section title={'Coleções em Destaque'}>
 
-                        <div className='colecoes-destaque'>
-
-                            {image.map((image, index) => (
-                                <div key={index} className='destaques' >
-                                    <img src={image} alt="" />
-                                    <BtnStyle>Comprar</BtnStyle>
-                                </div>
+                        <div className='destaques'>
+                            {destaques.map((image, index) => (
+                                <CardDestaque key={index} img={image.img} title={image.title} />
                             ))}
-
                         </div>
 
                     </Section>
@@ -96,7 +75,7 @@ const HomePage = () => {
                     </Section>
 
                     <Section title={'Produtos em Alta'} link={'Ver mais >>>'} >
-                        <ProductListing products={product} />
+                        <ProductListing products={products} />
                     </Section>
 
                     <Section>

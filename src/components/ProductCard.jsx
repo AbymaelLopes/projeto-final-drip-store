@@ -43,7 +43,7 @@ const ProductCard = ({ id, image, name, price, priceDiscount }) => {
         <ProductCardConteiner>
 
             <img id={id} src={image} alt=""
-                onClick={() => navigate('/produtos/:id')} />
+                onClick={() => navigate('/produtos/product-view')} />
 
             <p>{name}</p>
 

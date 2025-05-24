@@ -74,7 +74,7 @@ const ProductListingPage = () => {
                         <ProductListing products={ProdutosFiltrados} />
 
                     </div>
-                
+
                 </Section>
 
             </PLPageConteiner>
