@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ProductOptions from "./ProductOptions";
 
 const ConteinerbuyBox = styled.div`
     orientation: landscape;

@@ -8,7 +8,7 @@ import { ButtonStyle } from "../components/ButtonStyle";
 import ProductOptions from "../components/ProductOptions";
 
 const Conteiner = styled.div`
-    
+    orientation: landscape;
     .infoProduto {
         display: flex;
         margin: 1rem 2rem;

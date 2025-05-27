@@ -4,6 +4,7 @@ import arrowRight from "/assets/arrow-right.svg"
 import styled from "styled-components";
 
 const GalleryConteiner = styled.main`
+    orientation: landscape;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,6 +60,7 @@ const GalleryConteiner = styled.main`
     }
 
     @media screen and (max-width: 768px) {
+        orientation: portrait;
         .gallery{
             height: 15rem;
             & h2{
@@ -86,7 +88,7 @@ const GalleryConteiner = styled.main`
     }
     
     @media screen and (max-width: 320px) {
-        
+        orientation: portrait;
         .gallery{
             height: 15rem;
             & h2{

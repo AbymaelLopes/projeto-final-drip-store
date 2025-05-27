@@ -49,7 +49,7 @@ const HomePageConteiner = styled.div`
         }
     }   
     @media screen and (max-width: 320px){
-        //orientation: portrait;
+        orientation: portrait;
         .home{
             width: 100%;
             .gallery{
