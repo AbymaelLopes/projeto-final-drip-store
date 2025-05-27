@@ -33,15 +33,34 @@ const HomePageConteiner = styled.div`
         orientation: portrait;
         .home{
             width: 100%;
+            .gallery{
+                overflow: hidden;
+               .button-gallery{
+                    & button{
+                        width: 8rem;
+                        height: 3rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
         .destaques{
             width: 18rem;
         }
     }   
     @media screen and (max-width: 320px){
-        orientation: portrait;
+        //orientation: portrait;
         .home{
             width: 100%;
+            .gallery{
+               .button-gallery{
+                    & button{
+                        width: 8rem;
+                        height: 3rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
         .destaques{
             width: 15rem;

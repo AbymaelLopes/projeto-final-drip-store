@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ProductOptions from "./ProductOptions";
 
 const ConteinerbuyBox = styled.div`
+    orientation: landscape;
     padding-top: 1rem;
     .ref-product{
         & span{
@@ -59,6 +60,13 @@ const ConteinerbuyBox = styled.div`
         & span{
             color: var(--ligth-gray);
         }
+    }
+
+    @media screen and (max-width: 320px){
+        orientation: portrait;
+
+        display: flex;
+        flex-direction: column;
     }
 `
 

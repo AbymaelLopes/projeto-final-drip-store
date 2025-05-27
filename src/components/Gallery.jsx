@@ -2,7 +2,6 @@ import { useState } from "react";
 import arrowLeft from "/assets/arrow-left.svg"
 import arrowRight from "/assets/arrow-right.svg"
 import styled from "styled-components";
-import { ButtonStyle } from "./ButtonStyle";
 
 const GalleryConteiner = styled.main`
     display: flex;
@@ -64,13 +63,13 @@ const GalleryConteiner = styled.main`
             height: 15rem;
             & h2{
                 width: 15rem;
-                font-size: 2rem;
+                font-size: 1.5rem;
                 top: 2rem;
                 left: 2rem;
             }
             & #image-gallery{
-                margin-right: 2rem;
-                width: 6rem;
+                margin-right: 4rem;
+                overflow: hidden;
             }
             & button{
                 left: 2rem;
@@ -87,6 +86,7 @@ const GalleryConteiner = styled.main`
     }
     
     @media screen and (max-width: 320px) {
+        
         .gallery{
             height: 15rem;
             & h2{
@@ -96,7 +96,7 @@ const GalleryConteiner = styled.main`
                 left: 1rem;
             }
             & #image-gallery{
-                margin-right: 1rem;
+                margin-right: 2rem;
             }
             & button{
                 left: 4.5rem;
@@ -136,7 +136,8 @@ const Gallery = ({ className, width, height, images, radius, showThumbs, childre
     let miniaturas = showThumbs !== undefined && showThumbs !== ""
 
     let widthTablet = window.innerWidth >= 320 && window.innerWidth < 768
-    let heightTablet = window.innerWidth >= 320 && window.innerWidth < 76
+
+    let widthMobile = window.innerWidth <= 320 
 
     return (
         <GalleryConteiner>
@@ -144,7 +145,7 @@ const Gallery = ({ className, width, height, images, radius, showThumbs, childre
             <div className='gallery' >
 
                 <img id="image-gallery" className={className} src={images[currentIndex].img}  alt="" 
-                style={{width: widthTablet ? '15rem' : width, height: heightTablet ? '10rem': height, borderRadius: radius, objectFit: "contain"}}/>
+                style={{width: widthTablet ? '20rem' : widthMobile ? '13rem': width, height: height, borderRadius: radius, objectFit: "contain"}}/>
 
                 <h2>{images[currentIndex].title}</h2>
                 
