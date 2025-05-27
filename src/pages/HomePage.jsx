@@ -7,6 +7,7 @@ import Gallery from '../components/Gallery.jsx'
 import { ButtonStyle } from '../components/ButtonStyle.jsx'
 
 const HomePageConteiner = styled.div`
+    orientation: landscape;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,6 +30,7 @@ const HomePageConteiner = styled.div`
     }
        
     @media screen and (max-width: 768px){
+        orientation: portrait;
         .home{
             width: 100%;
         }
@@ -37,6 +39,7 @@ const HomePageConteiner = styled.div`
         }
     }   
     @media screen and (max-width: 320px){
+        orientation: portrait;
         .home{
             width: 100%;
         }
