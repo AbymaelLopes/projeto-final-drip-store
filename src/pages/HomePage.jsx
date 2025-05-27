@@ -2,8 +2,9 @@ import Layout from '../pages/Layout.jsx'
 import Section from '../components/Section.jsx'
 import ProductListing from '../components/ProductListing.jsx'
 import styled from 'styled-components'
-import CardDestaque from '../components/cardDestaque.jsx'
+import CardDestaque from '../components/CardDestaque.jsx'
 import Gallery from '../components/Gallery.jsx'
+import { ButtonStyle } from '../components/ButtonStyle.jsx'
 
 const HomePageConteiner = styled.div`
     display: flex;
@@ -18,19 +19,36 @@ const HomePageConteiner = styled.div`
             justify-content: center;
             flex-flow: row wrap;
         }
+        .button-gallery{
+            & button{
+                width: 15rem;
+                height: 4rem;
+                font-size: 1.5rem;
+            }
+        }
     }
        
     @media screen and (max-width: 768px){
         .home{
             width: 100%;
         }
+        .destaques{
+            width: 18rem;
+        }
+    }   
+    @media screen and (max-width: 320px){
+        .home{
+            width: 100%;
+        }
+        .destaques{
+            width: 15rem;
+        }
     }
 `
 
 const slider = [
     {title: 'Queima de stoque Nike', img: '/assets/image.png'},
-    {title: 'Coleção Adiddas', img: '/assets/destaque2.png'},
-    {title: 'Novo Beats Bass', img: '/assets/destaque3.png'}
+    {title: 'Queima de stoque Nike', img: '/assets/image.png'}
 ]
 
 const destaques = [
@@ -58,7 +76,13 @@ const HomePage = () => {
 
                 <div className='home'>
                    
-                    <Gallery images={slider} showThumbs={''} width={'35rem'} height={'18rem'} radius={'15px'} className={'gallery-conteiner'}/>        
+                    <Gallery images={slider} showThumbs={''} width={'35rem'} height={'18rem'} radius={'15px'} className={'gallery-conteiner'}>
+                    
+                    <div className='button-gallery'>
+                        <ButtonStyle>COMPRAR</ButtonStyle>    
+                    </div>
+                    
+                    </Gallery>        
 
                     <Section title={'Coleções em Destaque'}>
 

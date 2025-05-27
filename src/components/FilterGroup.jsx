@@ -37,8 +37,8 @@ const FilterGroupConteiner = styled.main`
         }
     }
 
-    @media screen and (max-width: 314px){
-
+    @media screen and (max-width: 768px){
+       display: none;
     }
 `;
 

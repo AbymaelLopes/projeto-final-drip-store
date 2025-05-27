@@ -29,14 +29,14 @@ const filter = [
 ]
 
 const product = [
-    { id: 1, image: '../src/assets/Produto.svg', name: 'Banana', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 2, image: '../src/assets/Produto.svg', name: 'Maçã', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 3, image: '../src/assets/Produto.svg', name: 'Moreango', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 4, image: '../src/assets/Produto.svg', name: 'Abacaxi', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 5, image: '../src/assets/Produto.svg', name: 'Goiaba', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 6, image: '../src/assets/Produto.svg', name: 'Acerola', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 7, image: '../src/assets/Produto.svg', name: 'Seriguela', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
-    { id: 8, image: '../src/assets/Produto.svg', name: 'Abacate', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' }
+    { id: 1, image: '/assets/Produto.svg', name: 'Banana', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 2, image: '/assets/Produto.svg', name: 'Maçã', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 3, image: '/assets/Produto.svg', name: 'Moreango', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 4, image: '/assets/Produto.svg', name: 'Abacaxi', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 5, image: '/assets/Produto.svg', name: 'Goiaba', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 6, image: '/assets/Produto.svg', name: 'Acerola', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 7, image: '/assets/Produto.svg', name: 'Seriguela', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' },
+    { id: 8, image: '/assets/Produto.svg', name: 'Abacate', price: 'R$ 230,00', priceDiscount: 'R$ 180,00' }
 ]
 
 const ProductListingPage = () => {
@@ -51,8 +51,7 @@ const ProductListingPage = () => {
     const ProdutosFiltrados = useMemo(()=> {
         return product.filter((produto) => 
             produto.name.toLowerCase().includes(busca)
-    )
-}, [busca])
+    )}, [busca])
 
     return (
         <Layout>

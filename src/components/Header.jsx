@@ -77,8 +77,8 @@ const HeaderStyle = styled.header`
         }
     }
 
-    //Aplicação de responsividade para celulares
-    @media screen and (max-width: 820px){
+    //Aplicação de responsividade para Tablets
+    @media screen and (max-width: 768px){
         flex-direction: row;
         #logo{
             width: 8rem;
@@ -113,6 +113,34 @@ const HeaderStyle = styled.header`
             display: none;
         }
     }
+    
+    //Aplicação de responsividade para celulares
+    @media screen and (max-width: 768px){
+        #logo{
+            width: 7rem;
+        }
+        .header{
+            padding: 1rem 1rem;
+            .area-busca{
+                position: absolute;
+                top: 50%;
+                right: 2rem;
+                width: 1.5rem;
+                & input, & button, & p{
+                    display: none;
+                }& img{
+                    right: 1rem;
+                }
+            }
+        }
+        #buycart{
+            position: absolute;
+            top: 50%;
+        }
+        nav ul{
+            display: none;
+        }
+    }
 `
 
 const Header = () => {
@@ -128,7 +156,6 @@ const Header = () => {
     };
 
     const handleSearch = () => {
-        console.log(busca)
         if (busca.trim() !== '') {
             navigate(`/produtos?search=${encodeURIComponent(busca)}`);
         }

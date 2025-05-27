@@ -63,28 +63,61 @@ const GalleryConteiner = styled.main`
         .gallery{
             height: 15rem;
             & h2{
-                top: 3rem;
                 width: 15rem;
-                font-size: 2.5rem;
-                top: 3rem;
-                left: 3rem;
+                font-size: 2rem;
+                top: 2rem;
+                left: 2rem;
             }
             & #image-gallery{
+                margin-right: 2rem;
                 width: 6rem;
             }
             & button{
-                left: 3rem;
+                left: 2rem;
+                bottom: 2rem;
+            }
+        }
+        .miniatura{
+            gap: 1rem;
+            height: 4rem;
+            img {
+                width: 6rem;
+            }
+        }
+    }
+    
+    @media screen and (max-width: 320px) {
+        .gallery{
+            height: 15rem;
+            & h2{
+                width: 15rem;
+                font-size: 1.5rem;
+                top: 1rem;
+                left: 1rem;
+            }
+            & #image-gallery{
+                margin-right: 1rem;
+            }
+            & button{
+                left: 4.5rem;
+                bottom: 1rem;
+            }
+        }
+        .miniatura{
+            gap: 1rem;
+            height: 3rem;
+            img {
+                width: 4rem;
             }
         }
     }
 `;
 
-const Gallery = ({ className, width, height, images, radius, showThumbs }) => {
+const Gallery = ({ className, width, height, images, radius, showThumbs, children }) => {
     
     
     const [currentIndex, setCurrentIndex] = useState(0)
     
-    console.log(images[currentIndex].img)
     {/*Passa para o próximo indice */ }
     const nextSlide = () => {
         setCurrentIndex((atual) => (atual + 1) % images.length)
@@ -100,7 +133,10 @@ const Gallery = ({ className, width, height, images, radius, showThumbs }) => {
     }
     
 
-    let miniaturas = showThumbs !== undefined || showThumbs !== ""
+    let miniaturas = showThumbs !== undefined && showThumbs !== ""
+
+    let widthTablet = window.innerWidth >= 320 && window.innerWidth < 768
+    let heightTablet = window.innerWidth >= 320 && window.innerWidth < 76
 
     return (
         <GalleryConteiner>
@@ -108,11 +144,11 @@ const Gallery = ({ className, width, height, images, radius, showThumbs }) => {
             <div className='gallery' >
 
                 <img id="image-gallery" className={className} src={images[currentIndex].img}  alt="" 
-                style={{width: width, height: height, borderRadius: radius, objectFit: "cover"}}/>
-                
+                style={{width: widthTablet ? '15rem' : width, height: heightTablet ? '10rem': height, borderRadius: radius, objectFit: "contain"}}/>
+
                 <h2>{images[currentIndex].title}</h2>
                 
-                <ButtonStyle>Comprar</ButtonStyle>
+                {children}
 
                 {/*Seta direcional esquerda */}
                 <img id="arrowLeft" src={arrowLeft} alt=""
@@ -122,20 +158,11 @@ const Gallery = ({ className, width, height, images, radius, showThumbs }) => {
                 <img id='arrowRight' src={arrowRight} alt=""
                     onClick={nextSlide} />
             </div>
-{/* 
-            <div className='gallery-miniatura' >
 
-                {/*Carrega a imagem do de acordo com o index do state 
-                <img className="img-gallery" src={images[currentIndex].img} alt="" />
-
-            </div> 
-            */}
-
-            {/*Carregando miniatuas*/}
             <div className={miniaturas ? 'miniatura' : 'noMiniatura'} style={{ display: miniaturas ? 'flex' : 'none'}}>
 
                 {images.map((image, index) => (
-                    <img src={image.img} key={index} style={{ borderRadius: radius }} alt="" onClick={() => selecaoSlide(index)} />
+                    <img src={image.img} key={index} style={{ borderRadius: radius, objectFit: 'contain' }} alt="" onClick={() => selecaoSlide(index)} />
                 ))}
 
             </div>
