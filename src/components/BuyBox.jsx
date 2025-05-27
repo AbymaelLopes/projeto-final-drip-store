@@ -67,6 +67,12 @@ const ConteinerbuyBox = styled.div`
         display: flex;
         flex-direction: column;
     }
+    @media screen and (max-width: 768px){
+        orientation: portrait;
+
+        display: flex;
+        flex-direction: column;
+    }
 `
 
 const BuyBox = ( {name, references, stars, rating, price, priceDescount, descriptions, children} ) => {

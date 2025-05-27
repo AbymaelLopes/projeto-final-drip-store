@@ -31,6 +31,9 @@ const Conteiner = styled.div`
 
     @media screen and (max-width: 768px){
         orientation: portrait;
+        .gallery{
+            width: 85vw;
+        }
         .infoProduto {
             display: block;
             margin: 1rem 4rem;
@@ -39,7 +42,7 @@ const Conteiner = styled.div`
     @media screen and (max-width: 320px){
         orientation: portrait;
         .gallery{
-            width: 18rem;
+            width: 85vw;
         }
         .infoProduto {
             display: block;
