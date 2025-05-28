@@ -15,8 +15,7 @@ const ConteinerOptions = styled.div`
         align-items: center;
         width: 31px;
         height: 31px;
-        border: 1px solid;
-        & span{
+        & p{
             display: none;
         }
     }
@@ -31,14 +30,18 @@ const ConteinerOptions = styled.div`
 `
 
 const ProductOptions = ( {options, radius, shape, type} ) => {
-
+ 
+    let typeVerify = type == 'color'
+    
     return(
         <ConteinerOptions>
             <span>Tamanho</span>
             <div className="product-options" style={{borderRadius: radius}}>
                 {options.map((option, index) =>
-                    <div className={shape} key={index}>
-                        <span>{option}</span>
+                    <div  style={{background: typeVerify ? option: ''}} className={shape} key={index}>
+                        
+                        <p>{option}</p>
+                    
                     </div>
                 )}
             </div>

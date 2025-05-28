@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ButtonStyle } from "./ButtonStyle";
 
 const Conteiner = styled.div`
+    orientation: landscape;
     overflow: hidden;
     .destaque{
         width: 22rem;
@@ -24,6 +25,13 @@ const Conteiner = styled.div`
             position: absolute;
             bottom: 2rem;
             left: 2rem;
+        }
+    }
+
+    @media screen and (max-width: 420){
+        .destaques{
+            display: block;
+            width: 85vw;
         }
     }
 `

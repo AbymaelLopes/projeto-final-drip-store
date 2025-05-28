@@ -21,7 +21,7 @@ const SectionConteiner = styled.div`
         justify-content: center;
     }
 
-    @media screen and (max-width: 314px){
+    @media screen and (max-width: 420px){
         & .section-link{
             font-size: 12px;
         }

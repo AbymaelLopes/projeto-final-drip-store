@@ -61,7 +61,7 @@ const ConteinerbuyBox = styled.div`
         }
     }
 
-    @media screen and (max-width: 320px){
+    @media screen and (max-width: 420px){
         orientation: portrait;
 
         display: flex;
@@ -83,21 +83,32 @@ const BuyBox = ( {name, references, stars, rating, price, priceDescount, descrip
         <ConteinerbuyBox>
 
             <div className="ref-product">
+            
                 <h2>{name}</h2>
                 <span>{references}</span>
+            
             </div>
+
             <div className="rating" aria-label="Avaliações do Produto">
+            
                 <p className="ratings">{stars}</p>
                 <span>{`(${rating} avaliações)`}</span>
+            
             </div>
+            
             <div className="price-product">
+            
                 <span className="priceDescount">{priceDescount}</span>
                 <span className={descount ? 'descount' : 'price'} >{price}</span>
+            
             </div>
             <div className="descricao">
+            
                 <span>Descrição do produto</span>
                 <p>{descriptions}</p>
+            
             </div>
+            
             {children}
         </ConteinerbuyBox>
     )

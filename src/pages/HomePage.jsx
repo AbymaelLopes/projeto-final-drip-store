@@ -8,6 +8,7 @@ import { ButtonStyle } from '../components/ButtonStyle.jsx'
 
 const HomePageConteiner = styled.div`
     orientation: landscape;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,6 +33,7 @@ const HomePageConteiner = styled.div`
     @media screen and (max-width: 768px){
         orientation: portrait;
         .home{
+            
             width: 100%;
             .gallery{
                 overflow: hidden;
@@ -44,13 +46,14 @@ const HomePageConteiner = styled.div`
                 }
             }
         }
-        .destaques{
-            width: 18rem;
-        }
     }   
-    @media screen and (max-width: 320px){
+    @media screen and (max-width: 420px){
         orientation: portrait;
         .home{
+            .destaques{
+                width: 85vw;
+                
+            }
             width: 100%;
             .gallery{
                .button-gallery{
@@ -61,9 +64,6 @@ const HomePageConteiner = styled.div`
                     }
                 }
             }
-        }
-        .destaques{
-            width: 15rem;
         }
     }
 `

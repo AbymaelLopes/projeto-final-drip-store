@@ -115,7 +115,7 @@ const HeaderStyle = styled.header`
     }
     
     //Aplicação de responsividade para celulares
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 420px){
         #logo{
             width: 7rem;
         }

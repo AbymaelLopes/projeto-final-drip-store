@@ -3,7 +3,7 @@ import arrowLeft from "/assets/arrow-left.svg"
 import arrowRight from "/assets/arrow-right.svg"
 import styled from "styled-components";
 
-const GalleryConteiner = styled.main`
+const GalleryConteiner = styled.div`
     orientation: landscape;
     display: flex;
     flex-direction: column;
@@ -87,7 +87,7 @@ const GalleryConteiner = styled.main`
         }
     }
     
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 420px) {
         orientation: portrait;
         .gallery{
             height: 15rem;

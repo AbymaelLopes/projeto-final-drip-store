@@ -7,12 +7,12 @@ const InformationsConteiner = styled.main`
         padding-bottom: 1rem;
     }
     
-    @media screen and (max-width: 314px){
+    @media screen and (max-width: 420px){
         text-align: center;
         width: 100%;
     }
 
-    @media screen and (max-width: 700px){
+    @media screen and (max-width: 768px){
         text-align: center;
         width: 100%;
         & div{

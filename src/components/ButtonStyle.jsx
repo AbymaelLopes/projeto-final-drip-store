@@ -18,7 +18,13 @@ export const ButtonStyle = styled.button`
 
     @media screen and (max-width: 768px) {
         width: 7rem;
-        height: 2rem;
+        height: 3rem;
+        font-size: 12px;
+    }
+
+    @media screen and (max-width: 420px) {
+        width: 7rem;
+        height: 3rem;
         font-size: 12px;
     }
 `;
