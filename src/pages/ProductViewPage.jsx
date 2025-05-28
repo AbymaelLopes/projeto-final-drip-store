@@ -36,6 +36,7 @@ const Conteiner = styled.div`
         .buy-box{
             width: 50%;
             padding: 0 2rem;
+            user-select: none;
         }
     }
 

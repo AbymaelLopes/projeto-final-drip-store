@@ -69,7 +69,7 @@ const HeaderStyle = styled.header`
             transition: ease-in-out 0.2s;
             &:hover{
                 color: var(--primary);
-            }&.active{
+            }& .active{
                 color: var(--primary);
                 padding-bottom: 10px;
                 border-bottom: 3px var(--primary) solid ;

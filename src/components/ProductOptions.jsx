@@ -3,6 +3,7 @@ import styled from "styled-components";
 const ConteinerOptions = styled.div`
     display: flex;
     flex-direction: column;
+    user-select: none;
     .product-options{
         display: flex;
         gap: 8px;
@@ -15,6 +16,7 @@ const ConteinerOptions = styled.div`
         align-items: center;
         width: 31px;
         height: 31px;
+        cursor: pointer;
         & p{
             display: none;
         }
@@ -26,11 +28,12 @@ const ConteinerOptions = styled.div`
         width: 42px;
         height: 42px;
         border: 1px solid var(--ligth-gray-2);
-    }    
+        cursor: pointer;
+    }
 `
 
 const ProductOptions = ( {options, radius, shape, type} ) => {
- 
+    
     let typeVerify = type == 'color'
     
     return(
@@ -38,7 +41,7 @@ const ProductOptions = ( {options, radius, shape, type} ) => {
             <span>Tamanho</span>
             <div className="product-options" style={{borderRadius: radius}}>
                 {options.map((option, index) =>
-                    <div  style={{background: typeVerify ? option: ''}} className={shape} key={index}>
+                    <div id="options" style={{background: typeVerify ? option: ''}} className={shape} key={index}>
                         
                         <p>{option}</p>
                     
