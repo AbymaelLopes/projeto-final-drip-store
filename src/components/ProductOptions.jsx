@@ -30,9 +30,13 @@ const ConteinerOptions = styled.div`
         border: 1px solid var(--ligth-gray-2);
         cursor: pointer;
     }
+    .ativa{
+        border: 2px solid var(--primary);
+    }
 `
 
 const ProductOptions = ( {options, radius, shape, type} ) => {
+    
     
     let typeVerify = type == 'color'
     

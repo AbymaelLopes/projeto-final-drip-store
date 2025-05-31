@@ -6,6 +6,8 @@ import { useState } from 'react';
 import menuSvg from '/assets/menu.svg'
 import { ButtonStyle } from '../components/ButtonStyle.jsx'
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
+import HeaderMobile from './HeaderMobile.jsx';
 
 const HeaderStyle = styled.header`
     
@@ -145,6 +147,8 @@ const HeaderStyle = styled.header`
 
 const Header = () => {
 
+    const mobile = useMediaQuery({query: '(max-width: 768px)'})
+
     const [busca, setBusca] = useState('')
     const navigate = useNavigate();
 
@@ -161,7 +165,7 @@ const Header = () => {
         }
     };
 
-    return (
+    return mobile ? <HeaderMobile /> :
         <HeaderStyle>
 
             <div className='header'>
@@ -210,7 +214,7 @@ const Header = () => {
 
             </nav>
         </HeaderStyle>
-    );
+    ;
 }
 
 export default Header;

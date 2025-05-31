@@ -86,6 +86,7 @@ const images = [
 
 const ProductViewPage = () => {
 
+
     return (  
         <Conteiner>
             <Layout>
@@ -94,7 +95,7 @@ const ProductViewPage = () => {
                     <Gallery images={images} className={'viewProduct'} width={'30rem'} heigth={'10rem'} />
 
                     <div className="buy-box">
-                    
+
                         <BuyBox price={'R$ 230,00'} priceDescount={'R$ 210,00'} stars={'4,7'} rating={'105'} name={'Tênis Nike Revolution 6 Next Nature Masculino'} references={'Casual | Nike | REF:3214522'} descriptions={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia quo alias quidem facilis blanditiis soluta eligendi ipsam illo, atque commodi sed, iusto molestias est nisi! Fugiat nisi expedita tempora ex?'}>
                             
                             <ProductOptions type={'text'} options={optionTamanhos} shape={'square'} />

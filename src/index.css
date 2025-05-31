@@ -30,6 +30,10 @@
   font-family: 'Roboto';
 }
 
-body{
+.body{
   background: var(--ligth-gray-3);
+}
+
+.no-scroll {
+  overflow: hidden;
 }

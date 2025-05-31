@@ -78,7 +78,7 @@ const ConteinerbuyBox = styled.div`
 const BuyBox = ( {name, references, stars, rating, price, priceDescount, descriptions, children} ) => {
 
     let descount = priceDescount !== null && priceDescount !== undefined
-
+    console.log(descount)
     return(
         <ConteinerbuyBox>
 
