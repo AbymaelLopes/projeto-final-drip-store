@@ -86,13 +86,12 @@ const images = [
 
 const ProductViewPage = () => {
 
-
     return (  
         <Conteiner>
             <Layout>
                 <div className="infoProduto">
                     
-                    <Gallery images={images} className={'viewProduct'} width={'30rem'} heigth={'10rem'} />
+                    <Gallery images={images} className={'viewProduct'} showThumbs={'miniatura'} width={'30rem'} heigth={'10rem'} />
 
                     <div className="buy-box">
 

@@ -13,63 +13,102 @@ const ConteinerHeaderMobile = styled.div`
     justify-content: center;
     flex-direction: column;
     padding: 1rem;
-    
-    .header{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        #menuLogo{
-            width: 1.5rem;
-        }
-        #logo{
-            width: 8rem;
-        }
-        .area-busca{
-            gap: 0.5rem;
-            display: flex;
-            & input{
-                display: none;
-            }
-            & button{
-                display: none;
-            }
-            & p{
-                display: none;
-            }
-        }
-    }
-    .menu{
-        display: none;
-        transition: left 0.5s ease-out, opacity 0.5s ease-out;
-        & nav{
-            display: none;
-        }
-    }
-    
-    .menuAtivo{
-        display: flex;
-        transition: left 0.5s ease-out, opacity 0.5s ease-out;
-        left: 0;
-        z-index: 100;
-        top: 3rem;
-        position: fixed;
-        width: 90%;
-        height: 100vh;
-        background-color: var(--primary);
-        text-decoration: none;
-        & nav{
-            padding: 1rem;
-            & ul{
-                display: flex;
-                gap: 2rem;
-                flex-direction: column;
-            }
-            & a{
-                color: var(--white);
-                text-decoration: none;
-            }
-        }
+    .headerConteiner{
         
+        .header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            #menuLogo{
+                width: 1.5rem;
+            }
+            #logo{
+                width: 8rem;
+            }
+            .area-busca{
+                gap: 0.5rem;
+                display: flex;
+                & input{
+                    display: none;
+                }
+                & button{
+                    display: none;
+                }
+                & p{
+                    display: none;
+                }
+            }
+        }
+        .menu{
+            display: none;
+            transition: left 0.5s ease-out, opacity 0.5s ease-out;
+            & nav{
+                display: none;
+            }
+        }
+    }
+    .menuAtivo{
+        .header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            #menuLogo{
+                width: 1.5rem;
+            }
+            #logo{
+                width: 8rem;
+            }
+            .area-busca{
+                gap: 0.5rem;
+                display: flex;
+                & input{
+                    display: none;
+                }
+                & button{
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    position: absolute;
+                    left: 1rem;
+                    bottom: 4rem;
+                    z-index: 1000;
+                    color: var(--primary);
+                    background: var(--white);
+                }
+                & p{
+                    display: flex;
+                    position: absolute;
+                    left: 1.5rem;
+                    bottom: 2rem;
+                    z-index: 1000;
+                    color: var(--white);
+                }
+            }
+        }   
+        .menu{
+            display: flex;
+            transition: left 0.5s ease-out, opacity 0.5s ease-out;
+            left: 0;
+            z-index: 100;
+            top: 3rem;
+            position: fixed;
+            width: 90%;
+            height: 100vh;
+            background-color: var(--primary);
+            text-decoration: none;
+            & nav{
+                padding: 1rem;
+                & ul{
+                    display: flex;
+                    gap: 2rem;
+                    flex-direction: column;
+                }
+                & a{
+                    color: var(--white);
+                    text-decoration: none;
+                }
+            }
+        }
     }
 `
 
@@ -79,6 +118,7 @@ const HeaderMobile = () => {
     function henderMenu(){
 
         // Pega os elementos
+        const hConteiner = document.querySelector('.headerConteiner')
         const logoMenu = document.getElementById('menuLogo')
         const menu = document.getElementById('menu')
         const body = document.querySelector('.body')
@@ -86,20 +126,21 @@ const HeaderMobile = () => {
         // Adiciona evento de click no icone de menu
         logoMenu.addEventListener('click', (e) => {
             e.stopPropagation; 
-            menu.classList = 'menuAtivo' // Altera no nome da classe
-            body.classList = 'no-scroll'
+            hConteiner.classList = 'menuAtivo' // Altera no nome da classe
+            body.classList.toggle('no-scroll')
         })
         
         // Adciona evento de click no corpo
         document.addEventListener('click', (e) => {
 
             // Verifica se o menu está ativo e se o click não foi no icone ou nos itens do menu
-            if (menu.classList.contains('menuAtivo') &&
+            if (hConteiner.classList.contains('menuAtivo') &&
             !logoMenu.contains(e.target) && 
             !menu.contains(e.target))
             {
                 // Altera novamente a classe do menu para fechá-lo
-                menu.classList = 'menu'
+                hConteiner.classList.remove('menuAtivo')
+                hConteiner.classList.add('headerConteiner')
                 body.classList.remove('no-scroll')
             }
 
@@ -124,6 +165,8 @@ const HeaderMobile = () => {
         };
     return(
         <ConteinerHeaderMobile>
+        <div className='headerConteiner'>
+
         <div className='header'>
         
             <img id='menuLogo' src={menuSvg} onClick={henderMenu} alt="" />
@@ -139,7 +182,7 @@ const HeaderMobile = () => {
 
                 <img id='lupa' src={lupa} alt="" onClick={handleSearch} />
 
-                <NavLink to={"/:id"}><p>Cadastre-se</p></NavLink>
+                <NavLink to={"/:id"}><p id='cadastrar'>Cadastre-se</p></NavLink>
 
                 <NavLink to={"/:id"}>
 
@@ -171,6 +214,7 @@ const HeaderMobile = () => {
 
             </nav>
 
+        </div>
         </div>
         </ConteinerHeaderMobile>
     )
