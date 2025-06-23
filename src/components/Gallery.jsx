@@ -1,10 +1,7 @@
-import { useState } from "react";
-import arrowLeft from "/assets/arrow-left.svg"
-import arrowRight from "/assets/arrow-right.svg"
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const GalleryConteiner = styled.div`
-    orientation: landscape;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,16 +25,6 @@ const GalleryConteiner = styled.div`
             margin-right: 4rem;
             transform: rotate(-20deg);
         }
-        #arrowLeft {
-            position: absolute;
-            top: 50%;
-            left: 2rem;
-        }
-        #arrowRight {
-            top: 50%;
-            right: 2rem;
-            position: absolute;
-        }
         & button{
             position: absolute;
             left: 6rem;
@@ -51,17 +38,47 @@ const GalleryConteiner = styled.div`
             left: 6rem;
         }
     }
+    .noMiniatura{
+        display: flex;
+        & img{
+            display: none;
+        }
+    }
     .miniatura{
+        display: flex;
         gap: 1rem;
         height: 6rem;
         img {
             width: 8rem;
         }
     }
+    .slider-radio{
+        display: flex;
+        gap: 0.5rem;
+        display: none;
+    }
+    .custom-radio {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--primary);
+        border-radius: 50%; /* tira se quiser quadrado */
+        margin: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Quando o radio está checked, muda o estilo */
+    .slider-radio:checked + .custom-radio {
+        background-color: var(--primary);
+    }
 
     @media screen and (max-width: 768px) {
         orientation: portrait;
         .gallery{
+            #arrowLeft, #arrowRight{
+                display: none;
+            }
             height: 15rem;
             & h2{
                 width: 15rem;
@@ -90,6 +107,9 @@ const GalleryConteiner = styled.div`
     @media screen and (max-width: 420px) {
         orientation: portrait;
         .gallery{
+            #arrowLeft, #arrowRight{
+                display: none;
+            }
             height: 15rem;
             & h2{
                 width: 15rem;
@@ -120,26 +140,31 @@ const Gallery = ({ className, width, height, images, radius, showThumbs, childre
     
     const [currentIndex, setCurrentIndex] = useState(0)
     
-    {/*Passa para o próximo indice */ }
-    const nextSlide = () => {
-        setCurrentIndex((atual) => (atual + 1) % images.length)
-    }
-    
-    {/*Volta para o indice anterior */ }
-    const prevSlide = () => {
-        setCurrentIndex((atual) => (atual - 1 + images.length) % images.length)
-    }
-    
     const selecaoSlide = (index) => {
         setCurrentIndex(index)
     }
     
-
+    
     let miniaturas = showThumbs !== undefined && showThumbs !== ""
-
+    
     let widthTablet = window.innerWidth >= 320 && window.innerWidth < 768
-
+    
     let widthMobile = window.innerWidth <= 320 
+
+    useEffect(() => {
+    const intervalId = setInterval(() => {
+        setCurrentIndex((atual) => {
+        const proximoIndex = (atual + 1) % images.length;
+        const radioButtons = document.querySelectorAll('.slider-radio');
+        if (radioButtons[proximoIndex]) {
+            radioButtons[proximoIndex].checked = true;
+        }
+        return proximoIndex;
+        });
+    }, 3000);
+
+    return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
+    }, [images.length]);
 
     return (
         <GalleryConteiner>
@@ -153,16 +178,18 @@ const Gallery = ({ className, width, height, images, radius, showThumbs, childre
                 
                 {children}
 
-                {/*Seta direcional esquerda */}
-                <img id="arrowLeft" src={arrowLeft} alt=""
-                    onClick={prevSlide} />
-
-                {/*Seta direcional Direita*/}
-                <img id='arrowRight' src={arrowRight} alt=""
-                    onClick={nextSlide} />
             </div>
 
-            <div className={miniaturas ? 'miniatura' : 'noMiniatura'} style={{ display: miniaturas ? 'flex' : 'none'}}>
+            <div className="radio">
+                {images.map((image, indexRadio) => (
+                    <label key={indexRadio} className="custom-radio-label">
+                        <input id={image.id} onClick={() => selecaoSlide(indexRadio)} type="radio" name="radio-slider" className="slider-radio"/>
+                        <span className="custom-radio"></span>
+                    </label>
+                ))}
+            </div>
+
+            <div className={miniaturas ? 'miniatura' : 'noMiniatura'}>
 
                 {images.map((image, index) => (
                     <img src={image.img} key={index} style={{ borderRadius: radius, objectFit: 'contain' }} alt="" onClick={() => selecaoSlide(index)} />

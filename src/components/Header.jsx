@@ -184,9 +184,9 @@ const Header = () => {
 
                     <img id='lupa' src={lupa} alt="" onClick={handleSearch} />
 
-                    <NavLink to={"/:id"}><p>Cadastre-se</p></NavLink>
+                    <NavLink to={'/cadastro'}><p>Cadastre-se</p></NavLink>
 
-                    <NavLink to={"/:id"}>
+                    <NavLink to={"/login"}>
 
                         <ButtonStyle>Entrar</ButtonStyle>
                         
@@ -204,11 +204,11 @@ const Header = () => {
 
                     <NavLink to={'/'} end><li>Home</li></NavLink>
 
-                    <NavLink to={'/categorias'} end><li>Categorias</li></NavLink>
-
                     <NavLink to={'/produtos'} end><li>Produtos</li></NavLink>
 
-                    <NavLink to={'/meus-pedidos'} end><li>Meus Pedidos</li></NavLink>
+                    <NavLink to={'/notFound'} end><li>Categorias</li></NavLink>
+
+                    <NavLink to={'/notFound'} end><li>Meus Pedidos</li></NavLink>
                 
                 </ul>
 

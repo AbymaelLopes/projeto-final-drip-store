@@ -70,7 +70,7 @@ const HomePageConteiner = styled.div`
 
 const slider = [
     {title: 'Queima de stoque Nike', img: '/assets/image.png'},
-    {title: 'Queima de stoque Nike', img: '/assets/image.png'}
+    {title: 'Queima de stoque Nike', img: '/assets/Produto.svg'}
 ]
 
 const destaques = [
