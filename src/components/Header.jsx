@@ -66,15 +66,16 @@ const HeaderStyle = styled.header`
         margin-left: 5rem;
         gap: 2rem;
         font-weight: bold;
+        .active{
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 3px var(--primary) solid ;
+        }
         & a{
             color: var(--dark-gray);
             transition: ease-in-out 0.2s;
             &:hover{
                 color: var(--primary);
-            }& .active{
-                color: var(--primary);
-                padding-bottom: 10px;
-                border-bottom: 3px var(--primary) solid ;
             }
         }
     }

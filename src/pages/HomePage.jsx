@@ -8,7 +8,7 @@ import { ButtonStyle } from '../components/ButtonStyle.jsx'
 
 const HomePageConteiner = styled.div`
     orientation: landscape;
-    
+    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: center;

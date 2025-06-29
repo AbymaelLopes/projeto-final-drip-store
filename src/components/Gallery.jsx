@@ -152,6 +152,13 @@ const Gallery = ({ className, width, height, images, radius, showThumbs, childre
     let widthMobile = window.innerWidth <= 320 
 
     useEffect(() => {
+        // Marca o primeiro radio assim que o componente monta
+        const radioButtons = document.querySelectorAll('.slider-radio');
+        if (radioButtons[0]) {
+            radioButtons[0].checked = true;
+    }
+
+    // Roda o carrossel a cada 3 segundos
     const intervalId = setInterval(() => {
         setCurrentIndex((atual) => {
         const proximoIndex = (atual + 1) % images.length;
@@ -163,7 +170,7 @@ const Gallery = ({ className, width, height, images, radius, showThumbs, childre
         });
     }, 3000);
 
-    return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
+    return () => clearInterval(intervalId); // Limpa ao desmontar
     }, [images.length]);
 
     return (

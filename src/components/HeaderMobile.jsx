@@ -48,6 +48,7 @@ const ConteinerHeaderMobile = styled.div`
         }
     }
     .menuAtivo{
+        color: white;
         .header{
             width: 100%;
             display: flex;
@@ -105,6 +106,7 @@ const ConteinerHeaderMobile = styled.div`
                 }
                 & a{
                     color: var(--white);
+                    z-index: 200;
                     text-decoration: none;
                 }
             }
@@ -126,7 +128,8 @@ const HeaderMobile = () => {
         // Adiciona evento de click no icone de menu
         logoMenu.addEventListener('click', (e) => {
             e.stopPropagation; 
-            hConteiner.classList = 'menuAtivo' // Altera no nome da classe
+            hConteiner.classList.toggle('menuAtivo') // Altera no nome da classe
+            console.log(hConteiner.className)
             body.classList.toggle('no-scroll')
         })
         
@@ -163,6 +166,7 @@ const HeaderMobile = () => {
                 navigate(`/produtos?search=${encodeURIComponent(busca)}`);
             }
         };
+        
     return(
         <ConteinerHeaderMobile>
         <div className='headerConteiner'>
@@ -182,9 +186,9 @@ const HeaderMobile = () => {
 
                 <img id='lupa' src={lupa} alt="" onClick={handleSearch} />
 
-                <NavLink to={"/:id"}><p id='cadastrar'>Cadastre-se</p></NavLink>
+                <NavLink to={"/cadastro"}><p id='cadastrar'>Cadastre-se</p></NavLink>
 
-                <NavLink to={"/:id"}>
+                <NavLink to={"/login"}>
 
                     <ButtonStyle>Entrar</ButtonStyle>
                     
